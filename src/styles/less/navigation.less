@@ -1,0 +1,89 @@
+.navigation {
+    width: 170px;
+    background-color: @texto-claro;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: -300px;
+    z-index: 97;
+    overflow: hidden;
+    transition: left .3s ease-in-out;
+    border-right: 1px solid @gris-medio;
+    &.abierto {
+        left: 40px;
+        z-index: 97;
+    }
+    .navigation-close {
+        cursor: pointer;
+        font-size: 1.5em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 6px 8px 10px 8px;
+        width: 20px;
+        height: 20px;
+        background-color: @texto-claro;
+        color: @fondo-base;
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    h3 {
+        margin-top: 5px;
+        padding: 10px;
+        font-size: 1em;
+        text-transform: capitalize;
+        color: @fondo-base;
+        font-weight: 200;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        padding-top: 15px;
+        li {
+            font-size: 0.8em;
+            font-weight: normal;
+            color: @texto-medio;
+            cursor: pointer;
+            padding: 12px 0 8px 0;
+            text-transform: capitalize;
+            border-bottom: 1px solid @gris-medio;
+            &:hover {
+                color: @texto-gris;
+            }
+            &.active {
+                color: @texto-claro;
+                background-color: @fondo-base;
+            }
+            svg {
+                padding: 0 10px;
+            }
+        }
+    }
+    .navigation-redes {
+        position: absolute;
+        border-collapse: collapse;
+        bottom: 80px;
+        left: 50px;
+        width: 200px;
+        height: 40px;
+        td {
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid @gris-medio;
+            color: @gris-medio;
+        }
+    }
+    .navigation-terminos {
+        position: absolute;
+        bottom: 120px;
+        left: 10px;
+        li {
+            padding: 3px 0px;
+            font-size: 0.6em;
+            text-transform: none;
+            font-weight: 100;
+        }
+    }
+}

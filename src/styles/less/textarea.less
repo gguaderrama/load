@@ -1,0 +1,57 @@
+.textarea-container {
+    padding: 30px 0 0 0;
+    position: relative;
+    text-align: left;
+    height: 180px;
+    &:after, &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #9b9b9b;
+        bottom: 0;
+        left: 0;
+        transition: all 0.5s;
+    }
+    &:after {
+        background-color: @fondo-base;
+        transform: scaleX(0);
+    }
+    .textarea-label {
+        display: block;
+        font-size: 14px;
+        transform: translateY(25px);
+        color: @texto-medio;
+        transition: all 0.5s;
+        line-height: 0px;
+        padding-left: 10px;
+    }
+    .textarea-input {
+        resize:none;
+        position: relative;
+        background: transparent;
+        width: 98%;
+        border: none;
+        outline: none;
+        margin-top: 14px;
+        font-size: 16px;
+        height: 157px;
+        border: 2px solid #9b9b9b;
+        color: @fondo-base;
+    }
+    &.is-active::after {
+        transform: scaleX(1);
+    }
+
+    &.is-active .textarea-label {
+        color: @texto-medio;
+        padding-left: 0px;
+    }
+
+    &.is-completed .textarea-label {
+        line-height: 0px;
+        font-size: 12px;
+        transform: translateY(0);
+    }
+}

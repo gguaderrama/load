@@ -1,0 +1,53 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: load-administrador
+  namespace: default
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-administrador
+  template:
+    metadata:
+      labels:
+        app: load-administrador
+    spec:
+      containers:
+      - name: load-administrador
+        image: registry.gitlab.com/sellcom/load_administrador:CI_PIPELINE_ID
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: registry.gitlab.com
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-administrador
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: load-administrador
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: load-administrador
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: load-administrador.1a8b40c3be00487f8fdd.centralus.aksapp.io
+    http:
+      paths:
+      - backend:
+          serviceName: load-administrador
+          servicePort: 80
+        path: /

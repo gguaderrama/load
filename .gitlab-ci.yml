@@ -1,0 +1,50 @@
+image: gitlab/dind
+
+services:
+  - docker:dind
+
+stages:
+- build
+- package
+- deploy
+
+node-build:
+  image: node:8.12.0-alpine
+  stage: build
+  script: 
+    - npm install -g webpack
+    - npm install --progress=false
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+  only:
+    - develop
+
+docker-package:
+  image: docker:latest
+  stage: package
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_PIPELINE_ID" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_PIPELINE_ID"
+  only:
+    - develop
+
+k8s-deploy:
+  image: azuresdk/azure-cli-python
+  stage: deploy
+  script:
+    - python deploy.py $CI_PIPELINE_ID
+    - wget https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kubectl -qO /usr/local/bin/kubectl
+    - chmod +x /usr/local/bin/kubectl
+    - az login -u $AZ_USER -p $AZ_PASSWORD --tenant $AZ_TENANT
+    - az aks get-credentials --resource-group $AZ_RESOURCE_GROUP --name $AZ_RESOURCE
+    - kubectl delete secret registry.gitlab.com
+    - kubectl create secret docker-registry registry.gitlab.com --docker-server=https://registry.gitlab.com --docker-username=$DOCKER_USERNAME --docker-password=$DOCKER_PASSWORD --docker-email=alberto.ruiz@sellcom-solutions.com.mx
+    - kubectl apply -f deployment.yml
+  only:
+    - develop
+  environment:
+    name: desarrollo
+    url: http://load-administrador.1a8b40c3be00487f8fdd.centralus.aksapp.io

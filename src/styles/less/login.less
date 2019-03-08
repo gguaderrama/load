@@ -1,0 +1,77 @@
+.login-form {
+    width: 320px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: @fondo-base;
+    z-index: 9;
+    text-align: center;
+    transition: left .3s linear;
+    &.registro {
+        left: calc(~'100% - 320px');
+    }
+    .login-form-inputs {
+        padding: 60px 50px; 
+        &.registro {
+            padding: 10px 50px;
+        }
+    }
+    h4 {
+        color: @texto-medio;
+        padding-top: 80px;
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
+    .login-form-miembro {
+        position: absolute;
+        font-size: 0.7em;
+        color: @texto-medio;
+        bottom: 30px;
+        left: 80px;
+        span {
+            cursor: pointer;
+            font-weight: bold;
+            color: @texto-claro;
+        }
+    }
+    .login-form-olvidaste {
+        cursor: pointer;
+        position: absolute;
+        font-size: 0.7em;
+        color: @texto-medio;
+        top: 280px;
+        left: 142px;
+        &:hover {
+            color: @texto-claro;
+        }
+    }
+    .login-boton {
+        top: 400px;
+        left: 0;
+        width: 170px;
+        height: 36px;
+        position: absolute;
+        border-top-right-radius: 28px;
+        border-bottom-right-radius: 28px;
+        background-color: @texto-claro;
+        color: @fondo-base;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.9em;
+        border: none;
+        transition: top .3s linear;
+        cursor: pointer;
+        &.registrate {
+            top: 500px;
+        }
+    }
+}
+.login-top {
+    width: 100%;
+    height: 60px;
+    background-color: @fondo-base;
+    z-index: 8;
+    position: fixed;
+    top: 0;
+}

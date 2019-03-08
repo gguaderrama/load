@@ -1,0 +1,80 @@
+.club-form {
+    width: 45%;
+    position: relative;
+    display: inline-block;
+    margin: 6em 5em;
+    height: auto;
+    text-align: left;
+    float: left;
+    .text-container {
+        padding: 30px 0 0 0;
+        .no-copy();
+        &.is-active .text-label {
+            color: blueviolet;
+            &.oscuro {
+                color: @texto-medio;
+            }
+        }
+    }
+    .btn-back {
+        color: @texto-negro;
+        font-size: 2em;
+        text-align: center;
+    }
+    .mensaje {
+        color: red;
+        font-size: 0.7em;
+        padding: 0.1em 0;
+        line-height: 10px;
+        position: absolute;
+    }
+    @media screen and (max-width: 425px) {
+        & {
+            margin: 1em auto;
+            width: 80%;
+        }
+    }
+    h2 {
+        color: @texto-negro;
+        text-align: left;
+    }
+    button {
+        width: 100%;
+        margin-top: 20px;
+    }
+    /* Change Autocomplete styles in Chrome*/
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        border: none;
+        -webkit-text-fill-color: @texto-negro;
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+        background-color: transparent;
+    }
+    .combo-container {
+        padding: 25px 0px 20px 0px;
+        .mdl-selectfield {
+            select {
+                &.browser-default {
+                    color: @texto-negro;
+                    &:focus {
+                        outline: none;
+                        color: @texto-negro;
+                        background-color: @fondo-claro;
+                        font-size: 14px;
+                        line-height: 3em;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+    ul {
+        &.login-form-pass-val {
+            color: @texto-gris;
+            font-size: 0.8em;
+            li {
+            }
+        }
+    }
+}

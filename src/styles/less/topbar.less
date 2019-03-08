@@ -1,0 +1,97 @@
+.topbar {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-color: @texto-claro;
+    z-index: 96;
+    border-bottom: 1px solid @gris-medio;
+    h3 {
+        margin-left: 22px;
+        font-size: 1em;
+        display: inline-block;
+        color: @fondo-base;
+        font-weight: normal;
+        text-transform: capitalize;
+    }
+    ul {
+        float: right;
+        margin: 0;
+        display: inline-block;
+        height: 50px;
+        padding: 0;
+        li {
+            border-left: 1px solid @gris-medio;
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            text-align: center;
+            top: 0;
+            cursor: pointer;
+            svg {
+                padding: 16px;
+                font-size: 20px;
+                color: @gris-medio;
+            }
+            img {
+                position: absolute;
+                border: 2px solid @gris-medio;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                top: 8px;
+                right: 8px;
+            }
+        }
+    }
+}
+.side-bar {
+    width: 40px;
+    height: 100%;
+    background-color: @gris-oscuro;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 99;
+    .topbar-menu-icon {
+        position: absolute;
+        cursor: pointer;
+        color: @texto-claro;
+        padding: 12px;
+        width: 15px;
+        height: 18px;
+        display: inline-block;
+    }
+}
+.tab-bar {
+    top: 50px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background-color: @texto-claro;
+    z-index: 95;
+    border-bottom: 1px solid @gris-medio;
+    a {
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.6em;
+        font-weight: normal;
+        color: @fondo-base;
+        text-align: center;
+        padding: 10px 22px 7px 22px;
+        border-bottom: none;
+        cursor: pointer;
+        &.active {
+            font-weight: bold;
+            border-bottom: 3px solid @fondo-base;
+        }
+        &:not(.active):hover {
+            color: @gris-medio;
+        }
+
+    }
+}
